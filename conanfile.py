@@ -326,7 +326,7 @@ class SDL2Conan(ConanFile):
                 self.add_libraries_from_pc('esound')
             if self.options.directfb:
                 self.add_libraries_from_pc('directfb')
-        elif self.settings.os == "Macos":
+        elif str(self.settings.os) in ['Macos', 'iOS']:
             frameworks = ['Cocoa', 'Carbon', 'IOKit', 'CoreVideo', 'CoreAudio', 'AudioToolbox', 'ForceFeedback']
             for framework in frameworks:
                 self.cpp_info.exelinkflags.append("-framework %s" % framework)
