@@ -271,6 +271,9 @@ class SDL2Conan(ConanFile):
             cmake.definitions['VIDEO_DIRECTFB'] = self.options.directfb
         elif self.settings.os == "Windows":
             cmake.definitions["DIRECTX"] = self.options.directx
+        elif self.settings.os == "iOS":
+            cmake.definitions["VIDEO_OPENGL"] = False
+            cmake.definitions["VIDEO_OPENGLES"] = True
 
         cmake.configure(build_dir=self._build_subfolder)
         return cmake
